@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Bowling::Game::Interface do
   let!(:bowling_game) { Bowling::Game::Interface.new }
 
-  def roll_many(n,pins)
+  def roll_many(n, pins)
     (1..n).each do
       bowling_game.roll(pins)
     end
@@ -15,7 +15,7 @@ describe Bowling::Game::Interface do
       pins = 0
       roll_many(n, pins)
       10.times { bowling_game.frame_played }
-    end    
+    end
 
     it 'calculates the correct total score' do
       expect(bowling_game.class).to be(Bowling::Game::Interface)
@@ -29,7 +29,7 @@ describe Bowling::Game::Interface do
       pins = 1
       roll_many(n, pins)
       10.times { bowling_game.frame_played }
-    end    
+    end
 
     it 'calculates the correct total score' do
       expect(bowling_game.class).to be(Bowling::Game::Interface)
@@ -71,7 +71,7 @@ describe Bowling::Game::Interface do
 
   context 'perfect 300 game bowled of all strikes' do
     it 'will calculate a game total score of 300' do
-      roll_many(12,10)
+      roll_many(12, 10)
       10.times { bowling_game.frame_played }
       expect(bowling_game.score).to eq(300)
     end

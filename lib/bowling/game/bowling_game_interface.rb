@@ -2,9 +2,10 @@ require_relative 'bowling_game'
 
 module Bowling
   module Game
+    # Bowling game API
     class Interface
       attr_reader :id
-      def initialize(id=1)
+      def initialize(id = 1)
         @frameset = Bowling::Game::Internal.new
         @id = id
       end

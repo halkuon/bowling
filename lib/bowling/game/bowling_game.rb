@@ -1,5 +1,6 @@
 module Bowling
   module Game
+    # Class that has the logic of the bowling game
     class Internal
       def initialize
         @rolls = []
@@ -17,7 +18,7 @@ module Bowling
         total_score = 0
         frame_index = 0
 
-        for x in 0..(@frames_played - 1)
+        @frames_played.to_i.times do |x, _frame|
           if strike?(frame_index)
             @frame_scores[x] = 10 + strike_bonus(frame_index)
             frame_index += 1
@@ -68,9 +69,7 @@ module Bowling
 
       def spare_bonus(frame_index)
         spare_value = @rolls[frame_index + 2]
-        if spare_value == nil
-          return 0
-        end
+        return 0 if spare_value.nil?
         spare_value
       end
     end

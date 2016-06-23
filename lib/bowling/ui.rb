@@ -2,6 +2,7 @@ require_relative 'game/bowling_game_interface'
 require_relative 'player'
 
 module Bowling
+  # Game interface that the user can interact with
   class Interface
     def initialize
       @players = 0
@@ -9,20 +10,20 @@ module Bowling
     end
 
     def start_game!
-      puts "How many players?"
+      puts 'How many players?'
       @players = gets
       @players_game = []
       @players.to_i.times do |i, _player|
-        game_instance = Bowling::Game::Interface.new(i+1)
-        @players_game << Bowling::Player.new(game_instance, i+1)
-      end 
+        game_instance = Bowling::Game::Interface.new(i + 1)
+        @players_game << Bowling::Player.new(game_instance, i + 1)
+      end
       start_bowling
     end
 
     private
 
     def start_bowling
-      10.times do |frame|
+      10.times do
         puts "Frame ##{@frame}"
         @players_game.each do |player|
           player.play_frame
@@ -42,7 +43,7 @@ module Bowling
     end
 
     def determine_winner
-
+    
     end
 
     def player_roll(id)

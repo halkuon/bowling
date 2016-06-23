@@ -1,4 +1,5 @@
 module Bowling
+  # Player class that interacts with the bowling API
   class Player
     attr_reader :id
     def initialize(game, id)
@@ -19,15 +20,12 @@ module Bowling
 
     def play_out_bonus
       if player_rolled_strike?
-        puts "final roll strike!"
+        puts 'final roll strike!'
         @game.roll(player_roll)
-        @game.frame_played
         @game.roll(player_roll)
-        @game.frame_played
       elsif player_rolled_spare?
-        puts "final roll spare!"
+        puts 'final roll spare!'
         @game.roll(player_roll)
-        @game.frame_played
       end
     end
 
