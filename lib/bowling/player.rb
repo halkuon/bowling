@@ -1,5 +1,5 @@
 module Bowling
-  # Player class that interacts with the bowling API
+  # Player class that interacts with the bowling
   class Player
     attr_reader :id
     def initialize(game, id)
@@ -47,8 +47,12 @@ module Bowling
       @game.score
     end
 
-    def frame_score
-      @game.frame_score
+    def frame_score(n)
+      @game.frame_score(n)
+    end
+
+    def total_frames_played
+      @game.total_frames_played
     end
   end
 end

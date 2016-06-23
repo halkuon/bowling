@@ -2,6 +2,7 @@ module Bowling
   module Game
     # Class that has the logic of the bowling game
     class Internal
+      attr_reader :frames_played
       def initialize
         @rolls = []
         @frame_scores = []
