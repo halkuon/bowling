@@ -1,8 +1,5 @@
 require 'pry'
-
 class BowlingGame
-  attr_reader :score
-
   def initialize
     @rolls = []
     @frame_scores = []
@@ -40,18 +37,28 @@ class BowlingGame
     @frames_played += 1
   end
 
-  private
+  def frame_score(frame)
+    @frame_scores[frame]
+  end
 
   def strike?(frame_index)
     @rolls[frame_index] == 10
   end
 
-  def strike_bonus(frame_index)
-    @rolls[frame_index + 1] + @rolls[frame_index + 2]
-  end
-
   def spare?(frame_index)
     @rolls[frame_index] + @rolls[frame_index + 1] == 10
+  end
+
+  def check_last_roll
+    @rolls.last
+  end
+
+  private
+
+  def strike_bonus(frame_index)
+    @rolls[frame_index + 1] + @rolls[frame_index + 2]
+  rescue
+    0
   end
 
   def sum_of_balls_in_frame(frame_index)
@@ -59,6 +66,11 @@ class BowlingGame
   end
 
   def spare_bonus(frame_index)
-    @rolls[frame_index + 2]
+    spare_value = @rolls[frame_index + 2]
+    if spare_value == nil
+      return 0
+    else
+      return spare_value
+    end
   end
 end
