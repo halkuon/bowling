@@ -1,9 +1,15 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
+    addressable (2.4.0)
     ast (2.2.0)
     coderay (1.1.1)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     diff-lcs (1.2.5)
+    docile (1.1.5)
+    hashdiff (0.3.0)
+    json (1.8.3)
     method_source (0.8.2)
     parser (2.3.1.0)
       ast (~> 2.2)
@@ -12,6 +18,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-nav (0.2.4)
+      pry (>= 0.9.10, < 0.11.0)
     rainbow (2.1.0)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
@@ -33,16 +41,29 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.8.0)
+    safe_yaml (1.0.4)
+    simplecov (0.11.2)
+      docile (~> 1.1.0)
+      json (~> 1.8)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     slop (3.6.0)
     unicode-display_width (1.0.3)
+    webmock (2.1.0)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   pry
+  pry-nav
   rspec
   rubocop
+  simplecov
+  webmock
 
 BUNDLED WITH
    1.12.0
