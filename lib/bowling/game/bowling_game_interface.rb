@@ -3,10 +3,10 @@ require_relative 'bowling_game'
 module Bowling
   module Game
     class Interface
-      attr_reader :player_id
+      attr_reader :id
       def initialize(id=1)
         @frameset = Bowling::Game::Internal.new
-        @player_id = id
+        @id = id
       end
 
       def roll(pins)

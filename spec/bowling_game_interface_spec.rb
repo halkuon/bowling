@@ -9,7 +9,7 @@ describe Bowling::Game::Interface do
     end
   end
 
-  context 'test gutter game bowled' do
+  context 'gutter game with all zeros bowled' do
     before do
       n = 20
       pins = 0
@@ -17,13 +17,13 @@ describe Bowling::Game::Interface do
       10.times { bowling_game.frame_played }
     end    
 
-    it 'first test' do
+    it 'calculates the correct total score' do
       expect(bowling_game.class).to be(Bowling::Game::Interface)
       expect(bowling_game.score).to eq(0)
     end
   end
 
-  context 'test all ones bowled' do
+  context 'all ones bowled during game' do
     before do
       n = 20
       pins = 1
@@ -31,19 +31,9 @@ describe Bowling::Game::Interface do
       10.times { bowling_game.frame_played }
     end    
 
-    it 'second test' do
+    it 'calculates the correct total score' do
       expect(bowling_game.class).to be(Bowling::Game::Interface)
       expect(bowling_game.score).to eq(20)
-    end
-  end
-
-  context 'test one spare bowled' do
-    it 'third test' do
-      roll_spare
-      bowling_game.roll(3)
-      roll_many(17, 0)
-      10.times { bowling_game.frame_played }
-      expect(bowling_game.score).to eq(16)
     end
   end
 
@@ -56,8 +46,18 @@ describe Bowling::Game::Interface do
     bowling_game.roll(10)
   end
 
-  context 'test one strike bowled' do
-    it 'fourth test' do
+  context 'one spare bowled along with the rest gutter' do
+    it 'adds the spare bonus in the total score' do
+      roll_spare
+      bowling_game.roll(3)
+      roll_many(17, 0)
+      10.times { bowling_game.frame_played }
+      expect(bowling_game.score).to eq(16)
+    end
+  end
+
+  context 'one strike bowled during the first frame' do
+    it 'adds the strike bonus in the total score' do
       roll_strike
       bowling_game.frame_played
       bowling_game.roll(3)
@@ -69,8 +69,8 @@ describe Bowling::Game::Interface do
     end
   end
 
-  context 'test perfect game' do
-    it 'fifth test' do
+  context 'perfect 300 game bowled of all strikes' do
+    it 'will calculate a game total score of 300' do
       roll_many(12,10)
       10.times { bowling_game.frame_played }
       expect(bowling_game.score).to eq(300)
