@@ -55,7 +55,7 @@ module Bowling
       puts 'Frame scores:'
       player.score
       for i in 1..player.total_frames_played
-        puts "frame #{i}: #{player.frame_score(i-1)}"
+        puts "frame #{i}: #{player.frame_score(i - 1)}"
       end
       puts "Total score player #{player.id}: #{player.score}"
     end
