@@ -38,19 +38,23 @@ module Bowling
       final_scores = []
       @players_game.each do |player|
         player.play_out_bonus
+        final_scores << player.score
         display_score(player)
       end
-      determine_winner
+      determine_winner(final_scores)
     end
 
-    def determine_winner
-    
+    def determine_winner(final_scores)
+      index = final_scores.each_with_index.max[1]
+      high_score = final_scores[index]
+      player = index + 1
+      puts "The winner is player #{player}!! Highscore: #{high_score}"
     end
 
     def display_score(player)
-      puts "Frame scores:"
+      puts 'Frame scores:'
       player.score
-      for i in 1..(player.total_frames_played)
+      for i in 1..player.total_frames_played
         puts "frame #{i}: #{player.frame_score(i-1)}"
       end
       puts "Total score player #{player.id}: #{player.score}"
