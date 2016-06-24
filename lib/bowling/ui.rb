@@ -39,7 +39,6 @@ module Bowling
       @players_game.each do |player|
         player.play_out_bonus
         final_scores << player.score
-        display_score(player)
       end
       determine_winner(final_scores)
     end
@@ -48,14 +47,17 @@ module Bowling
       index = final_scores.each_with_index.max[1]
       high_score = final_scores[index]
       player = index + 1
+      @players_game.each { |f_score| display_score(f_score, true) }
       puts "The winner is player #{player}!! Highscore: #{high_score}"
     end
 
-    def display_score(player)
-      puts 'Frame scores:'
+    def display_score(player, final = false)
       player.score
-      for i in 1..player.total_frames_played
-        puts "frame #{i}: #{player.frame_score(i - 1)}"
+      unless final
+        puts 'Frame scores:'
+        for i in 1..player.total_frames_played
+          puts "frame #{i}: #{player.frame_score(i - 1)}"
+        end
       end
       puts "Total score player #{player.id}: #{player.score}"
     end
