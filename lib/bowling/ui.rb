@@ -39,6 +39,7 @@ module Bowling
       @players_game.each do |player|
         player.play_out_bonus
         final_scores << player.score
+        display_score(player)
       end
       determine_winner(final_scores)
     end
