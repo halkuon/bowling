@@ -3,11 +3,11 @@ module Bowling
     # Class that has the logic of the bowling game
     class Internal
       attr_reader :frames_played
-      def initialize
-        @rolls = []
-        @frame_scores = []
-        @current_roll = 0
-        @frames_played = 0
+      def initialize(args)
+        @rolls = args.fetch(:rolls, [])
+        @current_roll = args.fetch(:current_roll, 0)
+        @frame_scores = args.fetch(:frame_scores, [])
+        @frames_played = args.fetch(:frames_played, 0)
       end
 
       def roll(pins)
@@ -36,7 +36,7 @@ module Bowling
         total_score
       end
 
-      def frame_played
+      def play_frame
         @frames_played += 1
       end
 

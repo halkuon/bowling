@@ -1,5 +1,5 @@
 module Bowling
-  # Player class that interacts with the bowling
+  # Player class that interacts with the bowling API
   class Player
     attr_reader :id
     def initialize(game, id)

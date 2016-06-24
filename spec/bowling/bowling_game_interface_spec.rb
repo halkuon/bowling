@@ -77,8 +77,8 @@ describe Bowling::Game::Interface do
     end
   end
 
-  context 'test run' do
-    it 'test' do
+  context 'player scores multiple strikes in succession' do
+    it 'the score from these rolls are calculated corerectly' do
       bowling_game.roll(10)
       bowling_game.frame_played
       bowling_game.roll(10)

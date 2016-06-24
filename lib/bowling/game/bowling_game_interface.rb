@@ -6,7 +6,7 @@ module Bowling
     class Interface
       attr_reader :id
       def initialize(id = 1)
-        @frameset = Bowling::Game::Internal.new
+        @frameset = Bowling::Game::Internal.new({})
         @id = id
       end
 
@@ -23,7 +23,7 @@ module Bowling
       end
 
       def frame_played
-        @frameset.frame_played
+        @frameset.play_frame
       end
 
       def check_last_roll
